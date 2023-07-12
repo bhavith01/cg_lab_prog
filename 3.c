@@ -1,7 +1,10 @@
 #include<stdio.h>
 #include<GL/glut.h>
 float a = 0.0f;
-float view[3]={0,0,100};
+float b = 0.0f;
+float c = 0.0f;
+
+
 GLfloat v[8][3]={{-200,200,200},{200,200,200},{200,-200,200},{-200,-200,200},{-200,200,-200},{200,200,-200},{200,-200,-200},{-200,-200,-200}};
 void init(){
 glMatrixMode(GL_PROJECTION);
@@ -22,7 +25,9 @@ void display(){
 glClearColor(1,1,1,0);
 glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 glLoadIdentity();
-glRotatef(a,1,1,1);
+glRotatef(a,1,0,0);
+glRotatef(b,0,1,0);
+glRotatef(c,0,0,1);
 
 glColor3f(0.1,0.1,0.6);
 cube(v[0],v[1],v[2],v[3]);
@@ -46,10 +51,21 @@ glFlush();
 }
 void keys(unsigned char k,int x,int y){
 if (k == 'x') {
-        a += 10.0f; 
+        a += 1.0f; 
         glutPostRedisplay();
-}}
-void main(int argc,char **argv){
+}
+
+if (k == 'c') {
+        b += 1.0f; 
+        glutPostRedisplay();
+}
+if (k == 'z') {
+        c += 1.0f; 
+        glutPostRedisplay();
+}
+
+}
+int main(int argc,char **argv){
 glutInit(&argc,argv);
 glutInitWindowSize(500,500);
 glutInitWindowPosition(10,10);
@@ -60,4 +76,5 @@ glutDisplayFunc(display);
 glEnable(GL_DEPTH_TEST);
 glutKeyboardFunc(keys);
 glutMainLoop();
+return 0;
 }
