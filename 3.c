@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<GL/glut.h>
+float a = 0.0f;
 float view[3]={0,0,100};
 GLfloat v[8][3]={{-200,200,200},{200,200,200},{200,-200,200},{-200,-200,200},{-200,200,-200},{200,200,-200},{200,-200,-200},{-200,-200,-200}};
 void init(){
@@ -44,8 +45,10 @@ cube(v[2],v[3],v[7],v[6]);
 glFlush();
 }
 void keys(unsigned char k,int x,int y){
-if(k=='x')view[0]+=10;
-}
+if (k == 'x') {
+        a += 10.0f; 
+        glutPostRedisplay();
+}}
 void main(int argc,char **argv){
 glutInit(&argc,argv);
 glutInitWindowSize(500,500);
