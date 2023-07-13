@@ -39,7 +39,11 @@ void cohen(float X1,float Y1,float X2,float Y2)
 			done=1;
 		else
 		{
-			code=code_p ? code_p : code_q;
+		if (code_p != 0) {
+                	code = code_p;
+            	} else {
+                code = code_q;
+            }
 			if(code & TOP)
 			{
 				x=X1+(X2-X1)*(ymax-Y1)/(Y2-Y1);
